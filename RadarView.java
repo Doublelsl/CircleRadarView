@@ -2,11 +2,11 @@ package xxxxx.xxx
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Shader;
-import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -74,7 +74,7 @@ public class RadarView extends View {
     private void init() {
         // 雷达区画笔初始化
         mMainPaint = new Paint();
-        mMainPaint.setColor(getResources().getColor(R.color.radar_circle_line));
+        mMainPaint.setColor(Color.BLUE);
         mMainPaint.setAntiAlias(true);
         mMainPaint.setStrokeWidth(1);
         mMainPaint.setStyle(Paint.Style.STROKE);
@@ -82,34 +82,32 @@ public class RadarView extends View {
         mTextPaint = new Paint();
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTextSize(getResources().getDimension(R.dimen.radar_font_size));
-        mTextPaint.setColor(getResources().getColor(R.color.radar_title_text));
+        mTextPaint.setColor(Color.BLACK);
         mTextPaint.setStrokeWidth(1);
         mTextPaint.setAntiAlias(true);
-        mTextPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(),"fonts/FZY3JW.TTF"));
         //文本成绩画笔初始化
         mTextAchievementPaint = new Paint();
         mTextAchievementPaint.setTextAlign(Paint.Align.CENTER);
         mTextAchievementPaint.setTextSize(getResources().getDimension(R.dimen.radar_font_size));
-        mTextAchievementPaint.setColor(getResources().getColor(R.color.radar_data_text));
+        mTextAchievementPaint.setColor(Color.parseColor("#66421F"));
         mTextAchievementPaint.setStrokeWidth(1);
-        mTextAchievementPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(),"fonts/FZY3JW.TTF"));
         mTextAchievementPaint.setAntiAlias(true);
         //数据区（分数）画笔初始化
         mValuePaint = new Paint();
-        //mValuePaint.setColor(getResources().getColor(R.color.radar_data_color));
+        mValuePaint.setColor(Color.parseColor("#66421F"));
         mValuePaint.setAntiAlias(true);
         mValuePaint.setStrokeWidth(5);
         LinearGradient lg = new LinearGradient(0, 0, 5, 5,
-                getResources().getColor(R.color.radar_data_start_color),
-                getResources().getColor(R.color.radar_data_end_color), Shader.TileMode.MIRROR);
+                Color.GRAY,
+                Color.parseColor("#FFDF80"), Shader.TileMode.MIRROR);
         mValuePaint.setShader(lg);
         mValuePaint.setStyle(Paint.Style.FILL);
 
         mTitles = new ArrayList<>();
-        mTitles.add("数");
-        mTitles.add("图形");
-        mTitles.add("语言");
-        mTitles.add("逻辑思考");
+        mTitles.add("项目1");
+        mTitles.add("项目2");
+        mTitles.add("项目3");
+        mTitles.add("项目4");
         mCount = mTitles.size();
 
         //默认分数
